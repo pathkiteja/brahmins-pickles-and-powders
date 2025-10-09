@@ -2317,6 +2317,11 @@ nav::before {
         height: 42px;
     }
     
+    /* Hide desktop theme toggle on mobile */
+    .desktop-theme-toggle {
+        display: none !important;
+    }
+    
     /* Mobile navigation improvements */
     .mobile-nav-menu {
         padding: 1rem 0;

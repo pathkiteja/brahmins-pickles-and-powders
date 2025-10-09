@@ -2,6 +2,12 @@
 // BRAHMINS PICKLES & POWDERS - LIQUID GLASS JS
 // ========================================
 
+// Initialize theme immediately to prevent flash
+(function() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+})();
+
 class LiquidGlassWebsite {
     constructor() {
         this.cart = JSON.parse(localStorage.getItem('brahmin_cart')) || [];
@@ -792,36 +798,37 @@ Thank you for choosing us! 🙏`;
 
     // Theme Toggle Functionality (Standalone)
     setupThemeToggle() {
-        const themeToggle = document.getElementById('themeToggle');
-        
-        if (!themeToggle) return;
-
-        // Show the theme toggle (it was hidden in original)
-        themeToggle.style.display = 'flex';
-
-        // Theme toggle functionality
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            this.updateThemeIcon(newTheme);
-            
-            // Add animation
-            themeToggle.style.transform = 'scale(0.95) rotate(180deg)';
-            setTimeout(() => {
-                themeToggle.style.transform = 'scale(1) rotate(0deg)';
-            }, 300);
-        });
-
-        // Initialize theme display
+        // Load theme on page load FIRST
         const savedTheme = localStorage.getItem('theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
-        this.updateThemeIcon(savedTheme);
         
-        // Initialize mobile theme toggle display
-        this.initializeMobileTheme(savedTheme);
+        const themeToggle = document.getElementById('themeToggle');
+        
+        if (themeToggle) {
+            // Show the theme toggle (it was hidden in original)
+            themeToggle.style.display = 'flex';
+
+            // Theme toggle functionality
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                this.updateThemeIcon(newTheme);
+                this.updateMobileThemeDisplay(newTheme);
+                
+                // Add animation
+                themeToggle.style.transform = 'scale(0.95) rotate(180deg)';
+                setTimeout(() => {
+                    themeToggle.style.transform = 'scale(1) rotate(0deg)';
+                }, 300);
+            });
+        }
+
+        // Initialize theme display for both desktop and mobile
+        this.updateThemeIcon(savedTheme);
+        this.updateMobileThemeDisplay(savedTheme);
     }
 
     updateThemeIcon(theme) {
@@ -840,24 +847,11 @@ Thank you for choosing us! 🙏`;
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         this.updateThemeIcon(newTheme);
-        
-        // Update mobile theme icon and text
-        const mobileThemeIcon = document.getElementById('mobileThemeIcon');
-        const mobileThemeText = document.querySelector('#mobileThemeToggle .theme-text');
-        
-        if (mobileThemeIcon && mobileThemeText) {
-            if (newTheme === 'light') {
-                mobileThemeIcon.textContent = '🌙';
-                mobileThemeText.textContent = 'Dark Mode';
-            } else {
-                mobileThemeIcon.textContent = '☀️';
-                mobileThemeText.textContent = 'Light Mode';
-            }
-        }
+        this.updateMobileThemeDisplay(newTheme);
     }
 
-    // Initialize mobile theme display
-    initializeMobileTheme(theme) {
+    // Update mobile theme display (consolidated function)
+    updateMobileThemeDisplay(theme) {
         const mobileThemeIcon = document.getElementById('mobileThemeIcon');
         const mobileThemeText = document.querySelector('#mobileThemeToggle .theme-text');
         
@@ -870,6 +864,11 @@ Thank you for choosing us! 🙏`;
                 mobileThemeText.textContent = 'Light Mode';
             }
         }
+    }
+
+    // Initialize mobile theme display (legacy support)
+    initializeMobileTheme(theme) {
+        this.updateMobileThemeDisplay(theme);
     }
 
     // Ultra-Smooth Scroll Reveal Animation

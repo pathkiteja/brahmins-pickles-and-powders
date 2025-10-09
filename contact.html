@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" data-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="cart.html" class="cart-link">
-                        <span class="cart-icon">🛒</span>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </a></li>
-                </ul>
-                
-                <button class="theme-toggle" id="themeToggle">
-                    <span id="themeIcon">🌙</span>
-                </button>
-            </div>>
+<html lang="en" data-theme="dark">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Brahmins Pickles & Powders</title>
+    <meta name="description" content="Contact Brahmins Pickles & Powders for authentic Indian delicacies. Order takeaway 1 hour in advance. Call 9182002644 or 6281753613.">
+    <meta name="keywords" content="contact, order, takeaway, Indian food, authentic, traditional, phone order">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50' font-size='80'>🍛</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <img src="assets/logo.jpg" alt="Brahmins Logo" class="loading-logo">
+            <div class="loading-text">Loading...</div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="assets/logo.jpg" alt="Brahmins Logo" class="logo-img">
+                <div class="brand-name">Brahmins Pickles & Powders</div>
+            </a>
+            
+            <div class="nav-right">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Brahmins Pickles & Powders</title>
@@ -63,6 +84,11 @@
                         <span class="cart-count" id="cartCount">0</span>
                     </a></li>
                 </ul>
+                
+                <!-- Desktop Theme Toggle -->
+                <button class="theme-toggle desktop-theme-toggle" id="themeToggle">
+                    <span id="themeIcon">🌙</span>
+                </button>
                 
                 <!-- Mobile Top Actions (Search & Cart) -->
                 <div class="mobile-top-actions">
