@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brahmins Pickles & Powders - Authentic Indian Delicacies</title>
+    <meta name="description" content="Brahmins Pickles & Powders - Authentic Indian chapathis, pickles, and spice powders. Fresh traditional delicacies for takeaway. Order 1 hour in advance.">
+    <meta name="keywords" content="Indian food, pickles, powders, chapathi, takeaway, authentic, traditional, Brahmins">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50' font-size='80'>🍛</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <img src="assets/logo.jpg" alt="Brahmins Logo" class="loading-logo">
+            <div class="loading-text">Loading...</div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo-container">
+                <img src="assets/logo.jpg" alt="Brahmins Logo" class="logo-img">
+                <div class="brand-name">Brahmins Pickles & Powders</div>
+            </a>
+            
+            <div class="nav-right">
+                <!-- Desktop Navigation -->
+                <ul class="nav-links desktop-nav">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="cart.html" class="cart-link">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a></li>
+                </ul>
+                
+                <!-- Desktop Theme Toggle -->
+                <button class="theme-toggle desktop-theme-toggle" id="themeToggle">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                
+                <!-- Mobile Top Actions (Cart Only) -->
+                <div class="mobile-top-actions">
+                    <a href="cart.html" class="mobile-cart-link">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="mobileCartCount">0</span>
+                    </a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav-menu" id="mobileNavMenu">
+            <div class="mobile-menu-header">
+                <div class="mobile-menu-logo">
+                    <img src="assets/logo.jpg" alt="Brahmins Logo" class="mobile-logo-img">
+                    <span class="mobile-brand-name">Brahmins</span>
+                </div>
+                <button class="mobile-menu-close" id="mobileMenuClose">
+                    <span>×</span>
+                </button>
+            </div>
+            
+            <div class="mobile-menu-content">
+                <!-- Main Navigation -->
+                <ul class="mobile-nav-links">
+                    <li><a href="#home">🏠 Home</a></li>
+                    <li><a href="products.html">🍛 Products</a></li>
+                    <li><a href="#contact">📞 Contact</a></li>
+                </ul>
+                
+                <!-- Product Categories Section -->
+            <!-- Product Categories -->
+            <div class="mobile-categories-section">
+                <h3 class="mobile-section-title">Product Categories</h3>
+                <ul class="mobile-categories-list">
+                    <li><a href="products.html?category=chapathi">🫓 Chapathi Varieties</a></li>
+                    <li><a href="products.html?category=pickles">🥒 Pickles & Chutneys</a></li>
+                    <li><a href="products.html?category=powders">🌶️ Spice Powders</a></li>
+                </ul>
+            </div>                <!-- Settings Section -->
+                <div class="mobile-settings-section">
+                    <h3 class="mobile-section-title">⚙️ Settings</h3>
+                    <div class="mobile-theme-toggle">
+                        <span class="theme-label">Theme</span>
+                        <button class="mobile-theme-btn" id="mobileThemeToggle">
+                            <span id="mobileThemeIcon">🌙</span>
+                            <span class="theme-text">Dark Mode</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Footer Info -->
+                <div class="mobile-menu-footer">
+                    <p>Authentic Indian Delicacies</p>
+                    <p>Fresh • Traditional • Made with Love</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+        <!-- Mobile Search Bar -->
+        <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Search products..." class="mobile-search-input">
+            <button class="mobile-search-btn">Search</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content liquid-loading">
+            <h1>Brahmins Pickles & Powders</h1>
+            <p class="subtitle">Authentic Indian Delicacies</p>
+            <p class="tagline">"Fresh • Traditional • Made with Love"</p>
+            <a href="products.html" class="cta-button">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">About Our Heritage</h2>
+            
+            <div class="glass-card scroll-reveal">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); text-align: center; margin-bottom: 2rem;">
+                    Welcome to <strong>Brahmins Pickles & Powders</strong>, where authentic Indian flavors come alive. 
+                    We specialize in traditional chapathis, aromatic pickles, and premium spice powders, 
+                    all crafted with time-honored recipes and the finest ingredients.
+                </p>
+                
+                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); text-align: center; margin-bottom: 2rem;">
+                    Every dish tells a story of tradition, every spice carries the essence of heritage. 
+                    From our fresh daily chapathis to our signature pickles and powders, 
+                    we bring you the authentic taste of India with modern convenience.
+                </p>
+
+                <!-- Key Features Inline -->
+               
+
+            <!-- Features -->
+            <div class="features-grid">
+                <div class="feature scroll-reveal">
+                    <div class="feature-icon">🥘</div>
+                    <h3>Authentic Recipes</h3>
+                    <p>Traditional recipes passed down through generations, ensuring genuine Indian flavors in every bite.</p>
+                </div>
+                
+                <div class="feature scroll-reveal">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>Premium quality ingredients sourced carefully to maintain freshness and authentic taste.</p>
+                </div>
+                
+                <div class="feature scroll-reveal">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Takeaway Ready</h3>
+                    <p>Order 1 hour in advance for convenient pickup. Perfect for busy schedules and special occasions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Preview -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Our Specialties</h2>
+            
+            <div class="products-grid">
+                <div class="product-card scroll-reveal">
+                    <h3>Fresh Chapathis</h3>
+                    <p class="price">Starting from ₹15</p>
+                    <p>Soft, fresh chapathis made daily. Available in varieties like Alu Paratha, Palakura Chapath, and more.</p>
+                </div>
+                
+                <div class="product-card scroll-reveal">
+                    <h3>Premium Pickles</h3>
+                    <p class="price">₹550 per kg</p>
+                    <p>Traditional pickles including Tomato Pachadi, Gongura Pachadi, and other authentic varieties.</p>
+                </div>
+                
+                <div class="product-card scroll-reveal">
+                    <h3>Spice Powders</h3>
+                    <p class="price">₹800 per kg</p>
+                    <p>Aromatic Charu Powder and Kandi Powder made with premium spices and traditional methods.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="products.html" class="liquid-button scroll-reveal">View Complete Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Get In Touch</h2>
+            
+            <div class="glass-card scroll-reveal" style="text-align: center;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--text-primary);">Ready to Order?</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                    <div>
+                        <h4 style="color: var(--text-secondary); margin-bottom: 1rem;">📞 Call Us</h4>
+                        <p style="font-size: 1.2rem; font-weight: 600; color: var(--text-primary);">9182002644</p>
+                        <p style="font-size: 1.2rem; font-weight: 600; color: var(--text-primary);">6281753613</p>
+                    </div>
+                    
+                    <div>
+                        <h4 style="color: var(--text-secondary); margin-bottom: 1rem;">⏰ Order Process</h4>
+                        <p style="color: var(--text-muted);">Call 2 hour in advance</p>
+                        <p style="color: var(--text-muted);">Takeaway available</p>
+                    </div>
+                </div>
+                
+                <p style="color: var(--text-muted); font-style: italic;">
+                    "Experience the authentic taste of India with Brahmins Pickles & Powders"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+</html>

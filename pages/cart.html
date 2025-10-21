@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Brahmins Pickles & Powders</title>
+    <meta name="description" content="Review your cart and place your order for authentic Indian pickles and powders.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50' font-size='80'>🍛</text></svg>">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <img src="assets/logo.jpg" alt="Brahmins Logo" class="loading-logo">
+            <div class="loading-text">Loading...</div>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="assets/logo.jpg" alt="Brahmins Logo" class="logo-img">
+                <div class="brand-name">Brahmins Pickles & Powders</div>
+            </a>
+            
+            <div class="nav-right">
+                <!-- Desktop Navigation -->
+                <ul class="nav-links desktop-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="cart.html" class="cart-link active">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a></li>
+                </ul>
+                
+                <!-- Desktop Theme Toggle -->
+                <button class="theme-toggle desktop-theme-toggle" id="themeToggle">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                
+                <!-- Mobile Top Actions (Cart Only) -->
+                <div class="mobile-top-actions">
+                    <a href="cart.html" class="mobile-cart-link active">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="mobileCartCount">0</span>
+                    </a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-nav-menu" id="mobileNavMenu">
+            <div class="mobile-menu-header">
+                <div class="mobile-menu-logo">
+                    <img src="assets/logo.jpg" alt="Brahmins Logo" class="mobile-logo-img">
+                    <span class="mobile-brand-name">Brahmins</span>
+                </div>
+                <button class="mobile-menu-close" id="mobileMenuClose">
+                    <span>×</span>
+                </button>
+            </div>
+            
+            <div class="mobile-menu-content">
+                <!-- Main Navigation -->
+                <ul class="mobile-nav-links">
+                    <li><a href="index.html">🏠 Home</a></li>
+                    <li><a href="products.html">🍛 Products</a></li>
+                    <li><a href="index.html#contact">📞 Contact</a></li>
+                </ul>
+                
+                <!-- Product Categories Section -->
+                                            <!-- Product Categories -->
+            <div class="mobile-categories-section">
+                <h3 class="mobile-section-title">Product Categories</h3>
+                <ul class="mobile-categories-list">
+                    <li><a href="products.html?category=chapathi">🫓 Chapathi Varieties</a></li>
+                    <li><a href="products.html?category=pickles">🥒 Pickles & Chutneys</a></li>
+                    <li><a href="products.html?category=powders">🌶️ Spice Powders</a></li>
+                </ul>
+            </div>
+                
+                <!-- Settings Section -->
+                <div class="mobile-settings-section">
+                    <h3 class="mobile-section-title">⚙️ Settings</h3>
+                    <div class="mobile-theme-toggle">
+                        <span class="theme-label">Theme</span>
+                        <button class="mobile-theme-btn" id="mobileThemeToggle">
+                            <span id="mobileThemeIcon">🌙</span>
+                            <span class="theme-text">Dark Mode</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Footer Info -->
+                <div class="mobile-menu-footer">
+                    <p>Authentic Indian Delicacies</p>
+                    <p>Fresh • Traditional • Made with Love</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+        <!-- Mobile Search Bar -->
+        <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Search products..." class="mobile-search-input">
+            <button class="mobile-search-btn">Search</button>
+        </div>
+    </nav>
+
+    <!-- Cart Page Content -->
+        <!-- Main Content -->
+    <main style="padding-top: 120px; min-height: 100vh;">
+        <!-- Cart Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title scroll-reveal">🛒 Your Cart</h2>
+                
+                <!-- Two Column Layout -->
+                <div class="cart-layout">
+                    <!-- Left Column - Products List -->
+                    <div class="cart-products-section">
+                        <div class="cart-products-header">
+                            <h3>Your Items</h3>
+                        </div>
+                        
+                        <!-- Products Container with Scrolling -->
+                        <div class="cart-products-container" id="cartContainer">
+                            <!-- Cart items will be populated here -->
+                        </div>
+                        
+                        <!-- Empty Cart Message -->
+                        <div id="emptyCartMessage" class="empty-cart-message" style="display: none;">
+                            <div class="empty-cart-content">
+                                <div style="font-size: 4rem; margin-bottom: 1rem;">🛒</div>
+                                <h3>Your cart is empty</h3>
+                                <p>Add some delicious items to get started!</p>
+                                <a href="products.html" class="liquid-button">Browse Products</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Add More Items Button -->
+                        <div class="add-more-section">
+                            <a href="products.html" class="liquid-button add-more-btn">
+                                + Add More Items
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column - Cost Details & Place Order -->
+                    <div class="cart-summary-section">
+                        <div class="cart-summary-card">
+                            <h3>Order Summary</h3>
+                            
+                            <div class="summary-details">
+                                <div class="summary-row">
+                                    <span>Total Items:</span>
+                                    <span id="totalItems">0</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Subtotal:</span>
+                                    <span id="subtotal">₹0</span>
+                                </div>
+                                <div class="summary-divider"></div>
+                                <div class="summary-row total-row">
+                                    <span>Total Amount:</span>
+                                    <span id="total">₹0</span>
+                                </div>
+                            </div>
+                            
+                            <div class="cart-actions">
+                                <button class="liquid-button clear-btn" id="clearCartBtn">Clear Cart</button>
+                                <button class="liquid-button primary place-order-btn" id="checkoutBtn">Place Order</button>
+                            </div>
+                            
+                            <div class="order-note">
+                                <p>📱 Click "Place Order" to send your order via WhatsApp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Customer Details Modal -->
+    <div id="orderModal" class="product-popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>📱 Place Your Order</h3>
+                <button class="popup-close" id="closeOrderModal">&times;</button>
+            </div>
+            <div class="popup-body">
+                <form id="customerDetailsForm" style="padding: 1.5rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 1.5rem; text-align: center;">
+                        Fill your details to place order via WhatsApp
+                    </h4>
+                    
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="customerName" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            Your Name *
+                        </label>
+                        <input type="text" id="customerName" required 
+                               style="width: 100%; padding: 0.75rem; border: 1px solid var(--text-muted); border-radius: 8px; background: var(--background-secondary); color: var(--text-primary); font-size: 1rem;"
+                               placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="customerPhone" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            Phone Number *
+                        </label>
+                        <input type="tel" id="customerPhone" required 
+                               style="width: 100%; padding: 0.75rem; border: 1px solid var(--text-muted); border-radius: 8px; background: var(--background-secondary); color: var(--text-primary); font-size: 1rem;"
+                               placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label for="customerAddress" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            Delivery Address *
+                        </label>
+                        <textarea id="customerAddress" required rows="3"
+                                  style="width: 100%; padding: 0.75rem; border: 1px solid var(--text-muted); border-radius: 8px; background: var(--background-secondary); color: var(--text-primary); font-size: 1rem; resize: vertical;"
+                                  placeholder="Enter your complete address"></textarea>
+                    </div>
+                    
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="deliveryTiming" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            Preferred Delivery Time
+                        </label>
+                        <select id="deliveryTiming" 
+                                style="width: 100%; padding: 0.75rem; border: 1px solid var(--text-muted); border-radius: 8px; background: var(--background-secondary); color: var(--text-primary); font-size: 1rem;">
+                            <option value="ASAP">As Soon As Possible</option>
+                            <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
+                            <option value="Afternoon (12 PM - 4 PM)">Afternoon (12 PM - 4 PM)</option>
+                            <option value="Evening (4 PM - 8 PM)">Evening (4 PM - 8 PM)</option>
+                            <option value="Custom">Let me specify...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="customTimeGroup" style="margin-bottom: 1.5rem; display: none;">
+                        <label for="customTime" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            Specify Time
+                        </label>
+                        <input type="text" id="customTime" 
+                               style="width: 100%; padding: 0.75rem; border: 1px solid var(--text-muted); border-radius: 8px; background: var(--background-secondary); color: var(--text-primary); font-size: 1rem;"
+                               placeholder="e.g., Tomorrow 3 PM">
+                    </div>
+                    
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <button type="submit" class="liquid-button primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                            � Send Order to WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1rem; background: var(--background-secondary); border-radius: 8px; border-left: 4px solid var(--accent-color);">
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">
+                            ⏰ <strong>Please wait 15 minutes</strong> for order confirmation after sending via WhatsApp
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
