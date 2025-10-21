@@ -2202,6 +2202,21 @@ Thank you for choosing us! 🙏`;
     }
 
     showCategoryProducts(category) {
+        // Update hero title and subtitle
+        const pageTitle = document.getElementById('pageTitle');
+        const pageSubtitle = document.getElementById('pageSubtitle');
+        
+        const categoryTitles = {
+            'chapathi': { title: '🫓 Fresh Chapathis', subtitle: 'Made fresh daily with premium ingredients' },
+            'pickle': { title: '🥒 Traditional Pickles', subtitle: 'Authentic recipes passed down generations' },
+            'powder': { title: '🌶️ Spice Powders', subtitle: 'Pure, aromatic spice blends' }
+        };
+        
+        if (pageTitle && pageSubtitle && categoryTitles[category]) {
+            pageTitle.textContent = categoryTitles[category].title;
+            pageSubtitle.textContent = categoryTitles[category].subtitle;
+        }
+
         // Hide all category sections
         const allCategories = document.querySelectorAll('.product-category');
         allCategories.forEach(cat => {

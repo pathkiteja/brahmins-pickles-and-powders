@@ -4054,7 +4054,7 @@ body.page-transition {
 
 /* Enhanced Progress Indicators */
 .carousel-indicators {
-    margin-top: 0.5rem;
+    margin-top: 0;
 }
 
 .indicator-track {
@@ -4233,4 +4233,53 @@ body.page-transition {
 @keyframes cartPulse {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.5); opacity: 0.7; }
+}
+
+/* Fixed Cart Button */
+.fixed-cart-btn {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 20px rgba(255, 102, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 9999 !important;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.fixed-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(255, 102, 0, 0.4);
+}
+
+.fixed-cart-btn:active {
+    transform: translateY(0);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid white;
 }
