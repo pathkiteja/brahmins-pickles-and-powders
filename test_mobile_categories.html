@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Categories Test - Brahmins Pickles & Powders</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+        }
+        .test-info {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            max-width: 250px;
+            z-index: 10000;
+            font-size: 12px;
+        }
+        .test-info h4 {
+            margin: 0 0 10px 0;
+            color: #e74c3c;
+        }
+        .test-info ul {
+            margin: 8px 0;
+            padding-left: 15px;
+        }
+        .test-info li {
+            margin: 3px 0;
+        }
+        /* Force mobile view for testing */
+        @media (min-width: 769px) {
+            .desktop-categories { display: none !important; }
+            .mobile-categories { display: block !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h4>📱 Mobile Categories Test</h4>
+        <ul>
+            <li>✅ Swipe left/right on categories</li>
+            <li>✅ Tap indicators to switch</li>
+            <li>✅ Click category to view products</li>
+            <li>✅ Scroll down to see sticky header</li>
+        </ul>
+        <p><em>Test in mobile view or on device</em></p>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo-container">
+                <img src="assets/logo.jpg" alt="Brahmins Logo" class="logo-img">
+                <div class="brand-name">Brahmins Test</div>
+            </a>
+            
+            <div class="nav-right">
+                <div class="mobile-top-actions">
+                    <a href="#cart" class="mobile-cart-link">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="mobileCartCount">0</span>
+                    </a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="padding-top: 100px;">
+        <!-- Hero Section -->
+        <section class="section">
+            <div class="container">
+                <h1 class="page-title" style="text-align: center; color: white; margin-bottom: 2rem;">
+                    Mobile Categories Demo
+                </h1>
+            </div>
+        </section>
+
+        <!-- Category Selection -->
+        <section class="section" id="categorySection">
+            <div class="container">
+                <!-- Desktop Version -->
+                <div class="desktop-categories">
+                    <h2 class="section-title scroll-reveal">🍛 Explore Our Categories</h2>
+                    <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">
+                        Click on any category to explore our delicious offerings
+                    </p>
+                    
+                    <div class="category-blocks">
+                        <div class="category-block scroll-reveal" data-category="chapathi">
+                            <div class="category-icon">🫓</div>
+                            <div class="category-info">
+                                <h3>Fresh Chapathis</h3>
+                                <p>Soft, fresh chapathis made daily with premium ingredients</p>
+                                <span class="item-count">8 Items</span>
+                            </div>
+                        </div>
+                        
+                        <div class="category-block scroll-reveal" data-category="pickle">
+                            <div class="category-icon">
+                                <img src="assets/premium-pickles.png" alt="Premium Pickles" 
+                                     style="width: 3.5rem; height: 3.5rem; border-radius: 8px; object-fit: cover;">
+                            </div>
+                            <div class="category-info">
+                                <h3>Premium Pickles</h3>
+                                <p>Authentic traditional pickles with bold flavors and spices</p>
+                                <span class="item-count">12 Items</span>
+                            </div>
+                        </div>
+                        
+                        <div class="category-block scroll-reveal" data-category="powder">
+                            <div class="category-icon">🌶️</div>
+                            <div class="category-info">
+                                <h3>Aromatic Spice Powders</h3>
+                                <p>Fresh ground spices and powder blends for authentic taste</p>
+                                <span class="item-count">9 Items</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Horizontal Categories -->
+                <div class="mobile-categories">
+                    <div class="mobile-category-scroller" id="mobileCategoryScroller">
+                        <div class="mobile-category-item active" data-category="chapathi">
+                            <div class="mobile-category-content">
+                                <h3>Chapathis</h3>
+                                <p>8 Items</p>
+                            </div>
+                        </div>
+                        <div class="mobile-category-item" data-category="pickle">
+                            <div class="mobile-category-content">
+                                <h3>Pickles</h3>
+                                <p>12 Items</p>
+                            </div>
+                        </div>
+                        <div class="mobile-category-item" data-category="powder">
+                            <div class="mobile-category-content">
+                                <h3>Powders</h3>
+                                <p>9 Items</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Category Indicators -->
+                    <div class="mobile-category-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                        <div class="indicator" data-index="2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile Sticky Category Header -->
+        <div class="mobile-sticky-header" id="mobileStickyHeader" style="display: none;">
+            <div class="sticky-category-scroller">
+                <div class="sticky-category-item active" data-category="chapathi">
+                    <span>Chapathis</span>
+                </div>
+                <div class="sticky-category-item" data-category="pickle">
+                    <span>Pickles</span>
+                </div>
+                <div class="sticky-category-item" data-category="powder">
+                    <span>Powders</span>
+                </div>
+            </div>
+            <div class="sticky-cart-icon">
+                <a href="#cart">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="stickyCartCount">0</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Test Products Sections -->
+        <section class="section product-category" id="chapathiCategory" data-category="chapathi" style="display: none;">
+            <div class="container">
+                <h2 style="color: white; text-align: center;">Fresh Chapathis Products</h2>
+                <div style="padding: 3rem; text-align: center; color: white;">
+                    <p>This is where Chapathi products would be displayed</p>
+                    <p>Scroll down to see more content and test the sticky header</p>
+                    <div style="height: 100vh; background: linear-gradient(45deg, #2c3e50, #34495e); margin: 2rem 0; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        Chapathi Products Here
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section product-category" id="pickleCategory" data-category="pickle" style="display: none;">
+            <div class="container">
+                <h2 style="color: white; text-align: center;">Premium Pickles Products</h2>
+                <div style="padding: 3rem; text-align: center; color: white;">
+                    <p>This is where Pickle products would be displayed</p>
+                    <p>Scroll down to see more content and test the sticky header</p>
+                    <div style="height: 100vh; background: linear-gradient(45deg, #8e44ad, #9b59b6); margin: 2rem 0; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        Pickle Products Here
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section product-category" id="powderCategory" data-category="powder" style="display: none;">
+            <div class="container">
+                <h2 style="color: white; text-align: center;">Aromatic Powders Products</h2>
+                <div style="padding: 3rem; text-align: center; color: white;">
+                    <p>This is where Powder products would be displayed</p>
+                    <p>Scroll down to see more content and test the sticky header</p>
+                    <div style="height: 100vh; background: linear-gradient(45deg, #e74c3c, #c0392b); margin: 2rem 0; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        Powder Products Here
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', () => {
+            new LiquidGlassWebsite();
+        });
+    </script>
+</body>
+</html>

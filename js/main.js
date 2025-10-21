@@ -25,6 +25,7 @@ class LiquidGlassWebsite {
         this.setupCartFunctionality();
         this.setupAdvancedCart();
         this.setupCategoryManagement();
+        this.setupMobileCategories();
         this.updateCartDisplay();
         this.updateAllQuantityDisplays();
         this.setupSimpleScrolling();
@@ -357,7 +358,7 @@ class LiquidGlassWebsite {
     }
 
     updateCartDisplay() {
-        const cartCountElements = document.querySelectorAll('#cartCount, #mobileCartCount, .cart-count');
+        const cartCountElements = document.querySelectorAll('#cartCount, #mobileCartCount, #stickyCartCount, .cart-count');
         const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
         
         cartCountElements.forEach(el => {
@@ -2065,6 +2066,177 @@ Thank you for choosing us! 🙏`;
 
             isDragging = false;
         }, { passive: true });
+    }
+
+    // Simple Mobile Categories Bar
+    setupMobileCategories() {
+        const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+        const indicatorProgress = document.getElementById('indicatorProgress');
+        const stickyHeader = document.getElementById('mobileStickyHeader');
+        const stickyTabs = document.querySelectorAll('.category-tab');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        if (!indicators.length) return;
+
+        let currentIndex = 0;
+
+        // Initialize with first category
+        this.switchToCategory(currentIndex);
+
+        // Indicator clicks
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                this.switchToCategory(index);
+            });
+        });
+
+        // Sticky header tabs
+        stickyTabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                this.switchToCategory(index);
+            });
+        });
+
+        // Back to top button
+        if (backToTopBtn) {
+            backToTopBtn.addEventListener('click', () => {
+                const categorySection = document.getElementById('categorySection');
+                if (categorySection) {
+                    categorySection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }
+            });
+        }
+
+        // Store references for other methods
+        this.categoryData = {
+            currentIndex,
+            indicators,
+            indicatorProgress,
+            stickyTabs
+        };
+
+        // Setup sticky header
+        this.setupAdvancedStickyHeader();
+    }
+
+    switchToCategory(index) {
+        const { indicators, indicatorProgress, stickyTabs } = this.categoryData || {};
+        
+        if (!indicators || index < 0 || index >= indicators.length) return;
+
+        // Update current index
+        if (this.categoryData) {
+            this.categoryData.currentIndex = index;
+        }
+
+        // Update active states
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+
+        if (stickyTabs) {
+            stickyTabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+        }
+
+        // Update progress indicator
+        if (indicatorProgress) {
+            const progressTranslate = index * 100;
+            indicatorProgress.style.transform = `translateX(${progressTranslate}%)`;
+        }
+
+        // Show category products
+        const categoryMap = ['chapathi', 'pickle', 'powder'];
+        const category = categoryMap[index];
+        if (category) {
+            this.showCategoryProducts(category);
+        }
+    }
+
+    goToSlide(index) {
+        this.switchToCategory(index);
+    }
+
+    updateCarousel(index) {
+        this.switchToCategory(index);
+    }
+
+    setupAdvancedStickyHeader() {
+        const stickyHeader = document.getElementById('mobileStickyHeader');
+        const categorySection = document.getElementById('categorySection');
+        
+        if (!stickyHeader || !categorySection) return;
+
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        const updateStickyHeader = () => {
+            const currentScrollY = window.scrollY;
+            const categoryBottom = categorySection.offsetTop + categorySection.offsetHeight;
+            const isProductsVisible = currentScrollY > categoryBottom;
+            const isMobile = window.innerWidth <= 768;
+
+            if (isProductsVisible && isMobile) {
+                stickyHeader.classList.add('visible');
+            } else {
+                stickyHeader.classList.remove('visible');
+            }
+
+            lastScrollY = currentScrollY;
+            ticking = false;
+        };
+
+        const requestStickyUpdate = () => {
+            if (!ticking) {
+                requestAnimationFrame(updateStickyHeader);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', requestStickyUpdate, { passive: true });
+        window.addEventListener('resize', requestStickyUpdate, { passive: true });
+    }
+
+    showCategoryProducts(category) {
+        // Hide all category sections
+        const allCategories = document.querySelectorAll('.product-category');
+        allCategories.forEach(cat => {
+            cat.style.display = 'none';
+        });
+
+        // Show selected category with advanced animation
+        const targetCategory = document.getElementById(`${category}Category`);
+        if (targetCategory) {
+            targetCategory.style.display = 'block';
+            
+            // Advanced entrance animation
+            targetCategory.style.opacity = '0';
+            targetCategory.style.transform = 'translateY(50px) scale(0.95)';
+            targetCategory.style.filter = 'blur(5px)';
+            
+            setTimeout(() => {
+                targetCategory.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                targetCategory.style.opacity = '1';
+                targetCategory.style.transform = 'translateY(0) scale(1)';
+                targetCategory.style.filter = 'blur(0px)';
+            }, 100);
+
+            // Smooth scroll to products with offset for sticky header
+            setTimeout(() => {
+                const offset = window.innerWidth <= 768 ? 100 : 0;
+                const elementPosition = targetCategory.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }, 400);
+        }
     }
 }
 

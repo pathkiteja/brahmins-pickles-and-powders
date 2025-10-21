@@ -145,44 +145,61 @@
     <!-- Category Selection -->
     <section class="section" id="categorySection">
         <div class="container">
-            <h2 class="section-title scroll-reveal">🍛 Explore Our Categories</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">
-                Click on any category to explore our delicious offerings
-            </p>
-            
-            <div class="category-blocks">
-                <div class="category-block scroll-reveal" data-category="chapathi">
-                    <div class="category-icon">🫓</div>
-                    <div class="category-info">
-                        <h3>Fresh Chapathis</h3>
-                        <p>Soft, fresh chapathis made daily with premium ingredients</p>
-                        <span class="item-count">8 Items</span>
-                    </div>
-                </div>
-                
-                <div class="category-block scroll-reveal" data-category="pickle">
-                    <div class="category-icon">
-                        <img src="assets/premium-pickles.png" alt="Premium Pickles" 
-                             style="width: 3.5rem; height: 3.5rem; border-radius: 8px; object-fit: cover;">
-                    </div>
-                    <div class="category-info">
-                        <h3>Premium Pickles</h3>
-                        <p>Authentic traditional pickles with bold flavors and spices</p>
-                        <span class="item-count">12 Items</span>
-                    </div>
-                </div>
-                
-                <div class="category-block scroll-reveal" data-category="powder">
-                    <div class="category-icon">🌶️</div>
-                    <div class="category-info">
-                        <h3>Aromatic Spice Powders</h3>
-                        <p>Fresh ground spices and powder blends for authentic taste</p>
-                        <span class="item-count">9 Items</span>
+            <!-- Mobile Horizontal Categories -->
+            <div class="mobile-categories">
+                <!-- Enhanced Progress Indicators -->
+                <div class="carousel-indicators">
+                    <div class="indicator-track">
+                        <div class="indicator active" data-index="0" data-category="chapathi">
+                            <span>Chapathis</span>
+                        </div>
+                        <div class="indicator" data-index="1" data-category="pickle">
+                            <span>Pickles</span>
+                        </div>
+                        <div class="indicator" data-index="2" data-category="powder">
+                            <span>Powders</span>
+                        </div>
+                        <div class="indicator-progress" id="indicatorProgress"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Advanced Mobile Sticky Header -->
+    <div class="mobile-sticky-header" id="mobileStickyHeader">
+        <div class="sticky-content">
+            <!-- Mini Category Scroller -->
+            <div class="sticky-category-tabs">
+                <div class="tab-scroller">
+                    <div class="category-tab active" data-category="chapathi">
+                        <span class="tab-icon">🫓</span>
+                        <span class="tab-name">Chapathis</span>
+                    </div>
+                    <div class="category-tab" data-category="pickle">
+                        <span class="tab-icon">🥒</span>
+                        <span class="tab-name">Pickles</span>
+                    </div>
+                    <div class="category-tab" data-category="powder">
+                        <span class="tab-icon">🌶️</span>
+                        <span class="tab-name">Powders</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Actions -->
+            <div class="sticky-actions">
+                <button class="back-to-top-btn" id="backToTopBtn">
+                    <span>↑</span>
+                </button>
+                <a href="cart.html" class="sticky-cart-btn">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="stickyCartCount">0</span>
+                    <div class="cart-pulse"></div>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Back Navigation -->
     <div class="back-navigation" id="backNavigation" style="display: none;">
